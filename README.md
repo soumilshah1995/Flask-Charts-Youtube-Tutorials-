@@ -11,3 +11,6 @@
 * Tutorial 4: https://www.youtube.com/watch?v=Kfwyvnviwj8
 * Tutorial 5: https://youtu.be/e68S9x3Rh_0
 * Tutorial 6: Multiple Graph https://www.youtube.com/watch?v=QWxAODePGIM&feature=youtu.be
+
+
+<img width="587" alt="Screen Shot 2019-12-20 at 9 48 15 PM" src="https://user-images.githubusercontent.com/39345855/71301861-87cfae00-2372-11ea-8f69-fbd468642c55.png">
