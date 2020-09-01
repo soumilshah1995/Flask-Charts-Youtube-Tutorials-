@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" href="http://172.16.37.10/favicon.png">
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <script src="http://code.highcharts.com/highcharts-more.js"></script>
+  <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <h1> Helloworld!</h1>
+</head>
+
+<body>
+
+  <figure class="highcharts-figure">
+    <div id="container"></div>
+  </figure>
+
+<script>
+    var data = null;
+    function requestData()
+    {
+      $.ajax({
+        url: "/live-data",
+        type : 'GET',
+        cache: false,
+        success: function(html)
+        {
+          var data = html[1];
+
+          Highcharts.chart('container', {
+            title: {
+              text: 'Solar Employment Growth by Sector, 2010-2016'
+            },
+            subtitle: {
+              text: 'Source: thesolarfoundation.com'
+            },
+            yAxis: {
+              title: {
+                text: 'Number of Employees'
+              }
+            },
+            xAxis: {
+              accessibility: {
+                rangeDescription: 'Range: 2010 to 2017'
+              }
+            },
+            legend: {
+              layout: 'vertical',
+              align: 'right',
+              verticalAlign: 'middle'
+            },
+            plotOptions: {
+              series: {
+                label: {
+                  connectorAllowed: false
+                },
+                pointStart: 2010
+              }
+            },
+            series: [{
+              name: 'Installation',
+              data: data
+            }
+            ],
+            responsive: {
+              rules: [{
+                condition: {
+                  maxWidth: 500
+                },
+                chartOptions: {
+                  legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                  }
+                }
+              }]
+            }
+          })
+        }
+      });
+  }
+
+  $(document).ready(function() {
+    requestData();
+  });
+</script>
+</body>
+</html>
